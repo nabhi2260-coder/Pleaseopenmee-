@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Kashish ✨ Please Maaf Krdo Madam 🥺💖</title>
+    <title>For Kashish ✨ My Heart & Sincere Apology 💖</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -53,12 +53,24 @@
             -webkit-backface-visibility: hidden;
         }
 
+        /* Polaroid Tilt Effect */
+        .polaroid {
+            background: white;
+            padding: 10px 10px 25px 10px;
+            box-shadow: 0 8px 20px rgba(244, 114, 182, 0.25);
+            transition: all 0.3s ease;
+        }
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 30;
+        }
+
         .tear-left, .tear-right { opacity: 0; }
     </style>
 </head>
 <body class="text-pink-900 min-h-screen relative selection:bg-pink-300">
 
-    <!-- Music Toggle Button -->
+    <!-- Audio Music Toggle Floating Button -->
     <div class="fixed top-4 right-4 z-50">
         <button id="music-btn" class="bg-white/90 backdrop-blur-md border border-pink-300 text-pink-600 px-4 py-2 rounded-full shadow-lg hover:bg-pink-50 transition flex items-center gap-2 text-xs font-bold">
             <i id="music-icon" class="fa-solid fa-music text-pink-500"></i> <span id="music-text">Play Soft Tunes 🎶</span>
@@ -87,7 +99,7 @@
         <!-- Hero Header -->
         <header class="text-center mt-2 md:mt-6 hero-text">
             <span class="inline-block px-4 py-1.5 rounded-full bg-pink-200/80 text-pink-700 text-xs md:text-sm font-semibold tracking-wide uppercase mb-3 shadow-sm">
-                <i class="fa-solid fa-heart mr-1.5 text-pink-500"></i> From My Heart To Yours
+                <i class="fa-solid fa-sparkles mr-1.5 text-pink-500"></i> Created Especially For Kashish
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold text-pink-800 tracking-tight mb-2">
                 Hey Dearest Kashish... ✨
@@ -106,13 +118,13 @@
                 "Yrr mei glti krta hu mujhe pata ha bhott sarre but han mei unko improve krunga na😭 yrr app smjhaoge toh smjjaunga na and repeat bi ni krunga agge se please madam abb toh manjao yrr mujhe shi mei aca ni lgta jab app sad hote ho yrr mei patani unintentially kese krdeta hu yrrese but yrr dekho kbhi mene esa chaha tode ki apko gussa dilau mei toh chata hu app happy raho aur baate krte rahao😭😭😭😭😒"
             </p>
             <div class="flex justify-center gap-3">
-                <button id="hug-btn" class="bg-gradient-to-r from-pink-500 to-rose-400 hover:from-pink-600 hover:to-rose-500 text-white font-bold px-5 py-2.5 rounded-full text-xs md:text-sm shadow-md transition">
+                <button id="main-hug-btn" class="bg-gradient-to-r from-pink-500 to-rose-400 hover:from-pink-600 hover:to-rose-500 text-white font-bold px-5 py-2.5 rounded-full text-xs md:text-sm shadow-md transition">
                     Send Hug 💖
                 </button>
             </div>
         </section>
 
-        <!-- Characters Section -->
+        <!-- Cute Characters Row: Sad Crying Teddy & Situps Boy -->
         <section class="w-full max-w-2xl my-6 flex flex-col sm:flex-row items-center justify-center gap-6">
             
             <!-- Sad Crying Teddy Bear -->
@@ -161,11 +173,11 @@
                     </svg>
                 </div>
                 <p class="text-xs font-semibold text-pink-500 mt-1 bg-white/80 px-3 py-1 rounded-full shadow-sm border border-pink-200">
-                    Crying Teddy Bear 🥺
+                    <i class="fa-solid fa-hand-pointer mr-1 animate-bounce"></i> Crying Teddy Bear 🥺
                 </p>
             </div>
 
-            <!-- Curly Boy Doing Situps with Counter -->
+            <!-- Curly Hair Boy Doing Situps -->
             <div class="flex flex-col items-center relative" id="boy-section">
                 <div class="bg-white text-pink-800 text-xs font-bold px-3 py-1.5 rounded-2xl shadow-md border border-pink-200 mb-1 relative animate-bounce text-center">
                     Situps: <span id="situp-count" class="text-pink-600 font-extrabold text-sm">0</span>/100 🥺
@@ -259,6 +271,146 @@
             </div>
         </section>
 
+        <!-- Sweet Reminders / Polaroid Cards Section -->
+        <section class="w-full max-w-2xl my-8 px-2">
+            <h2 class="text-center text-2xl md:text-3xl font-bold text-pink-800 mb-6">
+                Sweet Reminders For Kashish 📸
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="polaroid rounded-xl text-center transform -rotate-3">
+                    <div class="w-full h-36 bg-pink-100 rounded-lg flex items-center justify-center text-4xl text-pink-400 mb-3">
+                        🌸
+                    </div>
+                    <p class="font-handwriting text-xl font-bold text-pink-700">Your Smile Is Pure Magic</p>
+                </div>
+
+                <div class="polaroid rounded-xl text-center transform rotate-2">
+                    <div class="w-full h-36 bg-pink-100 rounded-lg flex items-center justify-center text-4xl text-pink-400 mb-3">
+                        ✨
+                    </div>
+                    <p class="font-handwriting text-xl font-bold text-pink-700">Always In My Thoughts</p>
+                </div>
+
+                <div class="polaroid rounded-xl text-center transform -rotate-2">
+                    <div class="w-full h-36 bg-pink-100 rounded-lg flex items-center justify-center text-4xl text-pink-400 mb-3">
+                        🧸
+                    </div>
+                    <p class="font-handwriting text-xl font-bold text-pink-700">100% Guaranteed Care</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Apology Coupons Section -->
+        <section class="w-full max-w-2xl my-6 px-2">
+            <h2 class="text-center text-2xl md:text-3xl font-bold text-pink-800 mb-2">
+                Redeemable Apology Coupons 🎟️
+            </h2>
+            <p class="text-center text-xs text-pink-600 mb-6">Click any coupon below to redeem it right now!</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="coupon-card glass-card rounded-2xl p-4 text-center border-2 border-dashed border-pink-300 hover:border-pink-500 cursor-pointer transition" onclick="redeemCoupon('1x Favorite Food / Snack On Me! 🍕')">
+                    <span class="text-2xl">🍕</span>
+                    <h3 class="font-bold text-pink-800 text-sm mt-1">Snack Coupon</h3>
+                    <p class="text-[11px] text-pink-600 mt-1">1x Treat of your choice on me!</p>
+                </div>
+
+                <div class="coupon-card glass-card rounded-2xl p-4 text-center border-2 border-dashed border-pink-300 hover:border-pink-500 cursor-pointer transition" onclick="redeemCoupon('1x Win Any Argument Instantly! 👑')">
+                    <span class="text-2xl">👑</span>
+                    <h3 class="font-bold text-pink-800 text-sm mt-1">Argument Winner</h3>
+                    <p class="text-[11px] text-pink-600 mt-1">You win automatically without debate!</p>
+                </div>
+
+                <div class="coupon-card glass-card rounded-2xl p-4 text-center border-2 border-dashed border-pink-300 hover:border-pink-500 cursor-pointer transition" onclick="redeemCoupon('1x Infinite Listening & Attention Session! 🎧')">
+                    <span class="text-2xl">🎧</span>
+                    <h3 class="font-bold text-pink-800 text-sm mt-1">100% Attention</h3>
+                    <p class="text-[11px] text-pink-600 mt-1">Full, uninterrupted listening time!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mood Booster Zone -->
+        <section class="w-full max-w-2xl my-8 px-2">
+            <h2 class="text-center text-2xl md:text-3xl font-bold text-pink-800 mb-6">
+                Kashish's Happiness Corner 🌸
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                
+                <!-- Compliment Generator -->
+                <div class="glass-card rounded-2xl p-5 text-center pink-glow flex flex-col justify-between items-center">
+                    <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mb-2 text-xl">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="font-bold text-pink-800 text-sm mb-2">Compliment For You</h3>
+                    <p id="compliment-text" class="text-xs text-pink-600 font-medium italic mb-3 min-h-[40px]">
+                        "Click the button below to get a sweet reminder!"
+                    </p>
+                    <button id="compliment-btn" class="text-xs font-bold bg-pink-500 text-white px-4 py-2 rounded-full shadow hover:bg-pink-600 transition">
+                        Get Compliment ✨
+                    </button>
+                </div>
+
+                <!-- Virtual Hug Machine -->
+                <div class="glass-card rounded-2xl p-5 text-center pink-glow flex flex-col justify-between items-center">
+                    <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mb-2 text-xl">
+                        <i class="fa-solid fa-hands-holding-child"></i>
+                    </div>
+                    <h3 class="font-bold text-pink-800 text-sm mb-2">Virtual Hug Counter</h3>
+                    <div class="text-3xl font-extrabold text-pink-600 my-1" id="hug-count">0</div>
+                    <p class="text-xs text-pink-500 mb-3">Hugs sent to Kashish</p>
+                    <button id="counter-hug-btn" class="text-xs font-bold bg-rose-400 text-white px-4 py-2 rounded-full shadow hover:bg-rose-500 transition">
+                        Send Hug 🤗
+                    </button>
+                </div>
+
+                <!-- Cute Heart Catcher Game Launcher -->
+                <div class="glass-card rounded-2xl p-5 text-center pink-glow flex flex-col justify-between items-center">
+                    <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mb-2 text-xl">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <h3 class="font-bold text-pink-800 text-sm mb-2">Mini Joy Game</h3>
+                    <p class="text-xs text-pink-600 font-medium mb-3">
+                        Catch 5 falling hearts to unlock a secret message!
+                    </p>
+                    <button id="game-start-btn" class="text-xs font-bold bg-pink-500 text-white px-4 py-2 rounded-full shadow hover:bg-pink-600 transition">
+                        Play Mini Game 🎮
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Reasons Why I'm Asking For Forgiveness Grid -->
+        <section class="w-full max-w-2xl my-6 px-2 reasons-section">
+            <h2 class="text-center text-2xl md:text-3xl font-bold text-pink-800 mb-6">
+                Why I'm Asking You For Forgiveness 💭
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="reason-card glass-card rounded-2xl p-5 text-center pink-glow hover:bg-white/90 transition-all duration-300">
+                    <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                        <i class="fa-solid fa-face-sad-tear"></i>
+                    </div>
+                    <h3 class="font-bold text-pink-800 mb-1">I Realize My Mistake</h3>
+                    <p class="text-xs text-pink-600">As I was into some other talk so it happened, and I feel really terrible about it.</p>
+                </div>
+
+                <div class="reason-card glass-card rounded-2xl p-5 text-center pink-glow hover:bg-white/90 transition-all duration-300">
+                    <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                        <i class="fa-solid fa-ear-listen"></i>
+                    </div>
+                    <h3 class="font-bold text-pink-800 mb-1">My Promise To You</h3>
+                    <p class="text-xs text-pink-600">I promise I will listen to you carefully from now and would not repeat this mistake.</p>
+                </div>
+
+                <div class="reason-card glass-card rounded-2xl p-5 text-center pink-glow hover:bg-white/90 transition-all duration-300">
+                    <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                        <i class="fa-solid fa-heart-crack"></i>
+                    </div>
+                    <h3 class="font-bold text-pink-800 mb-1">From My Heart</h3>
+                    <p class="text-xs text-pink-600">Please mujhe maaf krdo madam 🥺🥺🥺 You mean so much to me!</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Interactive Decision Section: Forgive Me? -->
         <section class="w-full max-w-md my-8 glass-card rounded-3xl p-8 text-center pink-glow-lg border-2 border-white relative overflow-hidden decision-section">
             <h2 class="text-2xl md:text-3xl font-extrabold text-pink-800 mb-2">Will You Forgive Me, Kashish? 🥺</h2>
@@ -297,7 +449,20 @@
         </div>
     </div>
 
+    <!-- Heart Catch Game Canvas Overlay -->
+    <div id="game-modal" class="fixed inset-0 bg-pink-900/50 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl p-6 max-w-md w-full text-center shadow-2xl border-4 border-pink-200 relative">
+            <button id="close-game-btn" class="absolute top-3 right-3 text-pink-400 hover:text-pink-600 font-bold text-lg px-2">✕</button>
+            <h3 class="text-2xl font-bold text-pink-800 mb-1">Catch The Hearts! 💖</h3>
+            <p class="text-xs text-pink-600 mb-3">Score: <span id="game-score" class="font-bold text-pink-700">0</span> / 5</p>
+            <div id="game-area" class="w-full h-64 bg-pink-50 rounded-2xl relative overflow-hidden border border-pink-200 cursor-pointer">
+            </div>
+            <p id="game-msg" class="text-xs text-pink-500 font-semibold mt-2">Tap/click the falling hearts!</p>
+        </div>
+    </div>
+
     <script>
+        // --- 1. Email Notification Function ---
         function sendEmailNotification(subject, message) {
             fetch("https://formspree.io/f/nabhi2260@gmail.com", {
                 method: "POST",
@@ -310,7 +475,17 @@
             }).catch(err => console.log("Status:", err));
         }
 
-        // Situp Counter Logic
+        // --- 2. Redeem Coupon Handler ---
+        function redeemCoupon(couponTitle) {
+            alert("🎟️ Coupon Redeemed! " + couponTitle + "\n\nI have taken note of this!");
+            sendEmailNotification(
+                "Kashish Redeemed A Coupon! 🎟️",
+                "Kashish redeemed the coupon: " + couponTitle
+            );
+            triggerConfetti();
+        }
+
+        // --- 3. Situp Counter Logic ---
         let count = 0;
         const situpCountText = document.getElementById('situp-count');
         const doSitupBtn = document.getElementById('do-situp-btn');
@@ -333,7 +508,7 @@
         doSitupBtn.addEventListener('click', triggerSitup);
         doSitupBtn2.addEventListener('click', triggerSitup);
 
-        // Music Player Logic
+        // --- 4. Synthetic Audio Player ---
         let audioCtx = null;
         let isPlaying = false;
         let melodyInterval = null;
@@ -381,7 +556,37 @@
             if (melodyInterval) clearInterval(melodyInterval);
         }
 
-        // GSAP Setup
+        // --- 5. Compliment Generator ---
+        const compliments = [
+            "Kashish, your smile can literally brighten up the entire room! ✨",
+            "You have the sweetest, most genuine heart ever 🌸",
+            "You're not just special, Kashish—you're irreplaceable! 💖",
+            "Everything is 100x better when you're happy 🥰",
+            "You deserve all the sweetness and love in the world 💕"
+        ];
+        let compIdx = 0;
+        document.getElementById('compliment-btn').addEventListener('click', () => {
+            compIdx = (compIdx + 1) % compliments.length;
+            const textElem = document.getElementById('compliment-text');
+            gsap.to(textElem, { opacity: 0, duration: 0.2, onComplete: () => {
+                textElem.innerText = compliments[compIdx];
+                gsap.to(textElem, { opacity: 1, duration: 0.3 });
+            }});
+        });
+
+        // --- 6. Hug Counters & Actions ---
+        let hugCount = 0;
+        function handleHug(e) {
+            hugCount++;
+            document.getElementById('hug-count').innerText = hugCount;
+            createHeartBurst(e.currentTarget);
+            triggerConfetti();
+        }
+
+        document.getElementById('main-hug-btn').addEventListener('click', handleHug);
+        document.getElementById('counter-hug-btn').addEventListener('click', handleHug);
+
+        // --- 7. GSAP Entrance & Floating Hearts ---
         gsap.registerPlugin(ScrollTrigger);
 
         function createFloatingHearts() {
@@ -482,13 +687,7 @@
             }
         }
 
-        // Hug Button Action
-        document.getElementById('hug-btn').addEventListener('click', (e) => {
-            createHeartBurst(e.currentTarget);
-            triggerConfetti();
-        });
-
-        // Dodging "No" Button
+        // --- 8. Dodging "No" Button & Forgiveness Logic ---
         const noBtn = document.getElementById('no-btn');
         const yesBtn = document.getElementById('yes-btn');
         let noCount = 0;
@@ -542,6 +741,60 @@
                 }
             });
         });
+
+        // --- 9. Mini Game Logic ---
+        const gameModal = document.getElementById('game-modal');
+        const gameStartBtn = document.getElementById('game-start-btn');
+        const closeGameBtn = document.getElementById('close-game-btn');
+        const gameArea = document.getElementById('game-area');
+        const gameScoreText = document.getElementById('game-score');
+        const gameMsg = document.getElementById('game-msg');
+        let gameScore = 0;
+        let gameInterval = null;
+
+        gameStartBtn.addEventListener('click', () => {
+            gameModal.classList.remove('opacity-0', 'pointer-events-none');
+            gameScore = 0;
+            gameScoreText.innerText = "0";
+            gameMsg.innerText = "Tap/click the falling hearts!";
+            gameArea.innerHTML = "";
+            startGameSpawner();
+        });
+
+        closeGameBtn.addEventListener('click', () => {
+            gameModal.classList.add('opacity-0', 'pointer-events-none');
+            if (gameInterval) clearInterval(gameInterval);
+        });
+
+        function startGameSpawner() {
+            gameInterval = setInterval(() => {
+                if (gameScore >= 5) return;
+                const heart = document.createElement('div');
+                heart.className = 'absolute text-2xl cursor-pointer select-none';
+                heart.innerText = ['💖', '🌸', '✨'][Math.floor(Math.random() * 3)];
+                heart.style.left = Math.random() * (gameArea.clientWidth - 30) + 'px';
+                heart.style.top = '-30px';
+                gameArea.appendChild(heart);
+
+                gsap.to(heart, {
+                    y: gameArea.clientHeight + 40,
+                    duration: 2.5,
+                    ease: "none",
+                    onComplete: () => heart.remove()
+                });
+
+                heart.addEventListener('click', () => {
+                    gameScore++;
+                    gameScoreText.innerText = gameScore;
+                    heart.remove();
+                    if (gameScore >= 5) {
+                        gameMsg.innerText = "🎉 SECRET UNLOCKED: Kashish, you are loved immensely! ❤️";
+                        triggerConfetti();
+                        clearInterval(gameInterval);
+                    }
+                });
+            }, 600);
+        }
 
         function triggerConfetti() {
             const count = 200;
