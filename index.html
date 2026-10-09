@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Kashish ✨ Please Maaf Krdo Madam 🥺💖</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 40%, #ffd1dc 100%);
+            overflow-x: hidden;
+        }
+        .font-handwriting {
+            font-family: 'Caveat', cursive;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fff0f5; }
+        ::-webkit-scrollbar-thumb { background: #f472b6; border-radius: 10px; }
+
+        .pink-glow { box-shadow: 0 10px 30px -5px rgba(244, 114, 182, 0.35); }
+        .pink-glow-lg { box-shadow: 0 20px 40px -10px rgba(244, 114, 182, 0.45); }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1.5px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .perspective-1000 { perspective: 1000px; }
+        .letter-card {
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+        .letter-card.open { transform: rotateY(180deg); }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .tear-left, .tear-right { opacity: 0; }
+    </style>
+</head>
+<body class="text-pink-900 min-h-screen relative selection:bg-pink-300">
+
+    <!-- Music Toggle Button -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="music-btn" class="bg-white/90 backdrop-blur-md border border-pink-300 text-pink-600 px-4 py-2 rounded-full shadow-lg hover:bg-pink-50 transition flex items-center gap-2 text-xs font-bold">
+            <i id="music-icon" class="fa-solid fa-music text-pink-500"></i> <span id="music-text">Play Soft Tunes 🎶</span>
+        </button>
+    </div>
+
+    <!-- Floating Background Hearts -->
+    <div id="hearts-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+    <!-- GSAP Animated Floating Clouds -->
+    <div id="clouds-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-60">
+        <svg class="cloud-item absolute top-8 left-[-150px] w-48 md:w-72 text-white fill-current filter drop-shadow-md" viewBox="0 0 24 24">
+            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+        </svg>
+        <svg class="cloud-item absolute top-36 right-[-180px] w-56 md:w-80 text-pink-100 fill-current filter drop-shadow-sm" viewBox="0 0 24 24">
+            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+        </svg>
+        <svg class="cloud-item absolute top-[60vh] left-[-200px] w-64 md:w-96 text-white fill-current filter drop-shadow-md" viewBox="0 0 24 24">
+            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+        </svg>
+    </div>
+
+    <!-- Main Container -->
+    <main class="relative z-10 max-w-4xl mx-auto px-4 py-8 md:py-12 flex flex-col items-center">
+
+        <!-- Hero Header -->
+        <header class="text-center mt-2 md:mt-6 hero-text">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-pink-200/80 text-pink-700 text-xs md:text-sm font-semibold tracking-wide uppercase mb-3 shadow-sm">
+                <i class="fa-solid fa-heart mr-1.5 text-pink-500"></i> From My Heart To Yours
+            </span>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-pink-800 tracking-tight mb-2">
+                Hey Dearest Kashish... ✨
+            </h1>
+            <h2 class="text-xl md:text-2xl font-bold text-pink-600 mb-4">
+                I Am Truly So Sorry Madam! 🥺💖
+            </h2>
+        </header>
+
+        <!-- Main Heartfelt Note Card -->
+        <section class="w-full max-w-2xl my-4 glass-card rounded-3xl p-6 md:p-8 pink-glow-lg border-2 border-white text-center">
+            <div class="text-pink-500 text-3xl mb-3">
+                <i class="fa-solid fa-droplet animate-bounce"></i>
+            </div>
+            <p class="font-handwriting text-2xl md:text-3xl font-bold text-pink-800 leading-relaxed mb-4">
+                "Yrr mei glti krta hu mujhe pata ha bhott sarre but han mei unko improve krunga na😭 yrr app smjhaoge toh smjjaunga na and repeat bi ni krunga agge se please madam abb toh manjao yrr mujhe shi mei aca ni lgta jab app sad hote ho yrr mei patani unintentially kese krdeta hu yrrese but yrr dekho kbhi mene esa chaha tode ki apko gussa dilau mei toh chata hu app happy raho aur baate krte rahao😭😭😭😭😒"
+            </p>
+            <div class="flex justify-center gap-3">
+                <button id="hug-btn" class="bg-gradient-to-r from-pink-500 to-rose-400 hover:from-pink-600 hover:to-rose-500 text-white font-bold px-5 py-2.5 rounded-full text-xs md:text-sm shadow-md transition">
+                    Send Hug 💖
+                </button>
+            </div>
+        </section>
+
+        <!-- Characters Section -->
+        <section class="w-full max-w-2xl my-6 flex flex-col sm:flex-row items-center justify-center gap-6">
+            
+            <!-- Sad Crying Teddy Bear -->
+            <div class="flex flex-col items-center cursor-pointer group" id="teddy-section" title="Click teddy to comfort him!">
+                <div class="relative w-44 h-44 md:w-52 md:h-52 flex items-center justify-center">
+                    <svg id="teddy-svg" class="w-full h-full filter drop-shadow-xl transform transition-transform duration-300 group-hover:scale-105" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="55" cy="55" r="22" fill="#C48B68" />
+                        <circle cx="55" cy="55" r="14" fill="#E8B496" />
+                        <circle cx="145" cy="55" r="22" fill="#C48B68" />
+                        <circle cx="145" cy="55" r="14" fill="#E8B496" />
+                        
+                        <ellipse cx="100" cy="140" rx="48" ry="42" fill="#D29875" />
+                        <ellipse cx="100" cy="142" rx="30" ry="26" fill="#F3D5C5" />
+                        
+                        <circle cx="100" cy="90" r="46" fill="#D29875" />
+                        <ellipse cx="100" cy="98" rx="18" ry="14" fill="#F3D5C5" />
+                        <ellipse cx="100" cy="92" rx="7" ry="5" fill="#5C3A21" />
+                        
+                        <path id="teddy-mouth" d="M94 105 Q100 100 106 105" stroke="#5C3A21" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+                        <g id="teddy-eyes">
+                            <circle cx="82" cy="82" r="5" fill="#3D2314" />
+                            <circle cx="80.5" cy="80.5" r="1.8" fill="white" />
+                            <circle cx="118" cy="82" r="5" fill="#3D2314" />
+                            <circle cx="116.5" cy="80.5" r="1.8" fill="white" />
+                        </g>
+
+                        <path d="M75 73 Q82 76 88 74" stroke="#5C3A21" stroke-width="2" stroke-linecap="round" fill="none" />
+                        <path d="M125 73 Q118 76 112 74" stroke="#5C3A21" stroke-width="2" stroke-linecap="round" fill="none" />
+
+                        <path class="tear-left" d="M82 89 C80 94 80 98 82 101 C84 98 84 94 82 89 Z" fill="#60A5FA" />
+                        <path class="tear-right" d="M118 89 C116 94 116 98 118 101 C120 98 120 94 118 89 Z" fill="#60A5FA" />
+
+                        <g id="held-heart" class="transform origin-center">
+                            <path d="M100 135 C100 135 80 115 80 102 C80 94 86 88 94 88 C98.5 88 100 92 100 92 C100 92 101.5 88 106 88 C114 88 120 94 120 102 C120 115 100 135 100 135 Z" fill="#F43F5E" />
+                            <text x="100" y="106" font-family="'Nunito', sans-serif" font-size="7" font-weight="800" fill="white" text-anchor="middle">SORRY</text>
+                        </g>
+
+                        <ellipse cx="68" cy="125" rx="11" ry="18" fill="#C48B68" transform="rotate(25 68 125)" />
+                        <ellipse cx="132" cy="125" rx="11" ry="18" fill="#C48B68" transform="rotate(-25 132 125)" />
+
+                        <ellipse cx="68" cy="172" rx="15" ry="11" fill="#C48B68" />
+                        <ellipse cx="68" cy="172" rx="9" ry="6" fill="#F3D5C5" />
+                        <ellipse cx="132" cy="172" rx="15" ry="11" fill="#C48B68" />
+                        <ellipse cx="132" cy="172" rx="9" ry="6" fill="#F3D5C5" />
+                    </svg>
+                </div>
+                <p class="text-xs font-semibold text-pink-500 mt-1 bg-white/80 px-3 py-1 rounded-full shadow-sm border border-pink-200">
+                    Crying Teddy Bear 🥺
+                </p>
+            </div>
+
+            <!-- Curly Boy Doing Situps with Counter -->
+            <div class="flex flex-col items-center relative" id="boy-section">
+                <div class="bg-white text-pink-800 text-xs font-bold px-3 py-1.5 rounded-2xl shadow-md border border-pink-200 mb-1 relative animate-bounce text-center">
+                    Situps: <span id="situp-count" class="text-pink-600 font-extrabold text-sm">0</span>/100 🥺
+                    <div class="w-2 h-2 bg-white rotate-45 absolute -bottom-1 left-1/2 -translate-x-1/2 border-r border-b border-pink-200"></div>
+                </div>
+
+                <div class="relative w-44 h-44 md:w-52 md:h-52 flex items-center justify-center cursor-pointer" id="do-situp-btn">
+                    <svg id="boy-svg" class="w-full h-full filter drop-shadow-xl" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="boy-full-body">
+                            <ellipse cx="75" cy="175" rx="14" ry="8" fill="#F472B6" />
+                            <ellipse cx="125" cy="175" rx="14" ry="8" fill="#F472B6" />
+                            <path d="M70 145 L75 170 M130 145 L125 170" stroke="#FDBA74" stroke-width="10" stroke-linecap="round" />
+
+                            <path d="M75 110 Q100 100 125 110 L120 150 Q100 155 80 150 Z" fill="#FB7185" />
+                            <text x="100" y="135" font-family="'Nunito', sans-serif" font-size="8" font-weight="800" fill="white" text-anchor="middle">SORRY</text>
+
+                            <circle cx="100" cy="75" r="30" fill="#FED7AA" />
+
+                            <g fill="#4A2E12">
+                                <circle cx="80" cy="50" r="10" />
+                                <circle cx="92" cy="46" r="11" />
+                                <circle cx="108" cy="46" r="11" />
+                                <circle cx="120" cy="50" r="10" />
+                                <circle cx="72" cy="58" r="9" />
+                                <circle cx="128" cy="58" r="9" />
+                                <circle cx="85" cy="42" r="8" />
+                                <circle cx="100" cy="40" r="9" />
+                                <circle cx="115" cy="42" r="8" />
+                            </g>
+
+                            <circle cx="68" cy="75" r="7" fill="#FED7AA" />
+                            <circle cx="132" cy="75" r="7" fill="#FED7AA" />
+
+                            <path d="M82 63 Q88 67 92 64" stroke="#4A2E12" stroke-width="2" stroke-linecap="round" />
+                            <path d="M118 63 Q112 67 108 64" stroke="#4A2E12" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="87" cy="72" r="3.5" fill="#3D2314" />
+                            <circle cx="86" cy="71" r="1" fill="white" />
+                            <circle cx="113" cy="72" r="3.5" fill="#3D2314" />
+                            <circle cx="112" cy="71" r="1" fill="white" />
+                            <ellipse cx="80" cy="78" rx="4" ry="2.5" fill="#F472B6" opacity="0.6" />
+                            <ellipse cx="120" cy="78" rx="4" ry="2.5" fill="#F472B6" opacity="0.6" />
+                            <path d="M94 85 Q100 80 106 85" stroke="#3D2314" stroke-width="2" stroke-linecap="round" fill="none" />
+
+                            <path d="M78 115 Q95 90 130 75" stroke="#FED7AA" stroke-width="7" stroke-linecap="round" fill="none" />
+                            <path d="M122 115 Q105 90 70 75" stroke="#FED7AA" stroke-width="7" stroke-linecap="round" fill="none" />
+                        </g>
+                    </svg>
+                </div>
+                <button id="do-situp-btn-2" class="text-xs font-bold text-pink-600 bg-white/80 hover:bg-pink-100 px-3 py-1 rounded-full shadow-sm border border-pink-200 mt-1">
+                    Do Situp Button 🙇‍♂️
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Interactive Apology Envelope Letter -->
+        <section class="w-full max-w-lg my-6 perspective-1000 letter-section">
+            <div id="letter-card" class="letter-card relative w-full glass-card rounded-3xl p-6 md:p-8 pink-glow border border-white cursor-pointer min-h-[340px] flex flex-col justify-center">
+                <div class="letter-front text-center flex flex-col items-center justify-center space-y-4">
+                    <div class="w-16 h-16 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center text-2xl shadow-inner mb-1">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-pink-800">For Kashish 💌</h2>
+                    <p class="text-sm text-pink-600 max-w-xs">Tap anywhere to flip and read my full letter.</p>
+                    <span class="inline-flex items-center text-xs font-bold text-pink-500 bg-pink-50 px-4 py-2 rounded-full border border-pink-200">
+                        Read My Letter <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </span>
+                </div>
+
+                <div class="letter-back absolute inset-0 p-6 md:p-8 backface-hidden bg-white/95 rounded-3xl flex flex-col justify-between [transform:rotateY(180deg)] text-left border-2 border-pink-200 overflow-y-auto">
+                    <div>
+                        <div class="flex justify-between items-center mb-3 border-b border-pink-100 pb-2">
+                            <h3 class="font-handwriting text-3xl font-bold text-pink-700">Dearest Kashish,</h3>
+                            <i class="fa-solid fa-heart text-pink-400"></i>
+                        </div>
+                        <p class="text-pink-900 text-xs md:text-sm leading-relaxed mb-3">
+                            Yrr mei glti krta hu mujhe pata ha bhott sarre but han mei unko improve krunga na😭 yrr app smjhaoge toh smjjaunga na and repeat bi ni krunga agge se...
+                        </p>
+                        <p class="text-pink-900 text-xs md:text-sm leading-relaxed mb-3">
+                            Please madam abb toh manjao yrr mujhe shi mei aca ni lgta jab app sad hote ho yrr...
+                        </p>
+                        <p class="text-pink-800 font-bold text-xs md:text-sm leading-relaxed">
+                            Mei toh chata hu app happy raho aur baate krte rahao 😭😭😭😭
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-2 border-t border-pink-100 flex justify-between items-end">
+                        <span class="font-handwriting text-2xl font-bold text-pink-600">With all my heart ❤️</span>
+                        <span class="text-xs text-pink-400 font-semibold">(Tap to flip back)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Decision Section: Forgive Me? -->
+        <section class="w-full max-w-md my-8 glass-card rounded-3xl p-8 text-center pink-glow-lg border-2 border-white relative overflow-hidden decision-section">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-pink-800 mb-2">Will You Forgive Me, Kashish? 🥺</h2>
+            <p class="text-sm text-pink-600 mb-6">Please madam, abb toh manjao yrr... 😭</p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 relative min-h-[60px]" id="button-container">
+                <button id="yes-btn" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-pink-500 to-rose-400 hover:from-pink-600 hover:to-rose-500 text-white font-bold rounded-full shadow-lg hover:shadow-pink-300/50 transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 z-20 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-heart"></i> Yes, I Forgive You!
+                </button>
+
+                <button id="no-btn" class="w-full sm:w-auto px-6 py-3.5 bg-white text-pink-500 border-2 border-pink-300 hover:bg-pink-50 font-bold rounded-full shadow-sm transition-all duration-150 z-10">
+                    No, Still Mad 😤
+                </button>
+            </div>
+        </section>
+
+        <footer class="mt-8 text-center text-xs text-pink-400 font-medium">
+            Made specially for Kashish with lots of love & sincere apologies 💕
+        </footer>
+
+    </main>
+
+    <!-- Success Modal Popup -->
+    <div id="success-modal" class="fixed inset-0 bg-pink-900/40 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl border-4 border-pink-200 transform scale-90 transition-transform duration-300" id="modal-card">
+            <div class="w-20 h-20 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl text-pink-500 animate-bounce">
+                💖
+            </div>
+            <h3 class="text-3xl font-extrabold text-pink-800 mb-2 font-handwriting">YAY! Thank You Kashish!</h3>
+            <p class="text-pink-600 text-xs md:text-sm mb-6 leading-relaxed">
+                Thank you so much madam! I promise mei unko improve krunga and agge se repeat ni krunga! App humesha happy raho aur baate krte rahao 🥰
+            </p>
+            <button id="close-modal-btn" class="w-full py-3 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-full shadow-lg transition-colors duration-200">
+                Send A Big Hug 🤗
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function sendEmailNotification(subject, message) {
+            fetch("https://formspree.io/f/nabhi2260@gmail.com", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    _subject: subject,
+                    message: message,
+                    time: new Date().toLocaleString()
+                })
+            }).catch(err => console.log("Status:", err));
+        }
+
+        // Situp Counter Logic
+        let count = 0;
+        const situpCountText = document.getElementById('situp-count');
+        const doSitupBtn = document.getElementById('do-situp-btn');
+        const doSitupBtn2 = document.getElementById('do-situp-btn-2');
+
+        function triggerSitup() {
+            if (count < 100) {
+                count += 5;
+                if (count > 100) count = 100;
+                situpCountText.innerText = count;
+
+                gsap.timeline()
+                    .to('#boy-full-body', { y: 30, duration: 0.15, ease: "power1.in" })
+                    .to('#boy-full-body', { y: 0, duration: 0.2, ease: "back.out(2)" });
+
+                createHeartBurst(doSitupBtn);
+            }
+        }
+
+        doSitupBtn.addEventListener('click', triggerSitup);
+        doSitupBtn2.addEventListener('click', triggerSitup);
+
+        // Music Player Logic
+        let audioCtx = null;
+        let isPlaying = false;
+        let melodyInterval = null;
+
+        const musicBtn = document.getElementById('music-btn');
+        const musicIcon = document.getElementById('music-icon');
+        const musicText = document.getElementById('music-text');
+
+        musicBtn.addEventListener('click', () => {
+            if (!isPlaying) {
+                startSoftMusic();
+                musicIcon.className = "fa-solid fa-pause text-pink-500";
+                musicText.innerText = "Pause Music";
+                isPlaying = true;
+            } else {
+                stopSoftMusic();
+                musicIcon.className = "fa-solid fa-music text-pink-500";
+                musicText.innerText = "Play Soft Tunes 🎶";
+                isPlaying = false;
+            }
+        });
+
+        function startSoftMusic() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25];
+            let noteIdx = 0;
+
+            melodyInterval = setInterval(() => {
+                if (!audioCtx) return;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = notes[noteIdx % notes.length];
+                gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.2);
+                noteIdx = Math.floor(Math.random() * notes.length);
+            }, 400);
+        }
+
+        function stopSoftMusic() {
+            if (melodyInterval) clearInterval(melodyInterval);
+        }
+
+        // GSAP Setup
+        gsap.registerPlugin(ScrollTrigger);
+
+        function createFloatingHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartSymbols = ['🌸', '✨', '💖', '💕', '☁️'];
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'absolute text-xl pointer-events-none opacity-40';
+                heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.fontSize = (Math.random() * 16 + 12) + 'px';
+                container.appendChild(heart);
+
+                gsap.to(heart, {
+                    y: '-=120', x: '+=30',
+                    rotation: Math.random() * 60 - 30,
+                    opacity: 0.7,
+                    duration: Math.random() * 4 + 4,
+                    repeat: -1, yoyo: true, ease: "sine.inOut",
+                    delay: Math.random() * 3
+                });
+            }
+        }
+
+        function initCloudsAnimation() {
+            const clouds = document.querySelectorAll('.cloud-item');
+            clouds.forEach((cloud, index) => {
+                gsap.to(cloud, {
+                    x: '110vw', duration: 25 + index * 8, repeat: -1, ease: "none", delay: index * 5,
+                    onRepeat: () => gsap.set(cloud, { x: '-200px' })
+                });
+                gsap.to(cloud, { y: '+=15', duration: 3 + index, repeat: -1, yoyo: true, ease: "sine.inOut" });
+            });
+        }
+
+        function initEntranceAnimations() {
+            gsap.from('.hero-text', { y: -40, opacity: 0, duration: 1.2, ease: "back.out(1.7)" });
+            gsap.from('#teddy-section', { scale: 0.7, opacity: 0, duration: 1, delay: 0.3, ease: "elastic.out(1, 0.5)" });
+            gsap.from('#boy-section', { scale: 0.7, opacity: 0, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
+
+            gsap.to('.tear-left, .tear-right', { opacity: 0.9, y: 12, duration: 1.5, repeat: -1, ease: "power1.inOut", stagger: 0.3 });
+
+            gsap.from('.letter-section', {
+                scrollTrigger: { trigger: '.letter-section', start: 'top 85%' },
+                y: 40, opacity: 0, duration: 0.8, ease: "power2.out"
+            });
+            gsap.from('.decision-section', {
+                scrollTrigger: { trigger: '.decision-section', start: 'top 85%' },
+                scale: 0.9, opacity: 0, duration: 0.8, ease: "back.out(1.5)"
+            });
+        }
+
+        // Letter Flip
+        const letterCard = document.getElementById('letter-card');
+        letterCard.addEventListener('click', () => {
+            letterCard.classList.toggle('open');
+            gsap.fromTo(letterCard, { scale: 0.98 }, { scale: 1, duration: 0.4, ease: "back.out(2)" });
+        });
+
+        // Teddy Interactive Click
+        const teddySection = document.getElementById('teddy-section');
+        const teddyMouth = document.getElementById('teddy-mouth');
+        const heldHeart = document.getElementById('held-heart');
+
+        teddySection.addEventListener('click', () => {
+            teddyMouth.setAttribute('d', 'M94 100 Q100 108 106 100');
+            gsap.timeline()
+                .to('#teddy-svg', { y: -15, duration: 0.2, ease: "power2.out" })
+                .to('#teddy-svg', { y: 0, duration: 0.4, ease: "bounce.out" })
+                .to(heldHeart, { scale: 1.25, transformOrigin: 'center', duration: 0.2, yoyo: true, repeat: 3 }, "<");
+
+            createHeartBurst(teddySection);
+            setTimeout(() => teddyMouth.setAttribute('d', 'M94 105 Q100 100 106 105'), 3500);
+        });
+
+        function createHeartBurst(element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < 8; i++) {
+                const miniHeart = document.createElement('div');
+                miniHeart.className = 'fixed text-pink-500 text-lg pointer-events-none z-50';
+                miniHeart.innerHTML = '❤️';
+                miniHeart.style.left = centerX + 'px';
+                miniHeart.style.top = centerY + 'px';
+                document.body.appendChild(miniHeart);
+
+                const angle = (i / 8) * Math.PI * 2;
+                const distance = 60 + Math.random() * 40;
+
+                gsap.to(miniHeart, {
+                    x: Math.cos(angle) * distance, y: Math.sin(angle) * distance - 20,
+                    opacity: 0, scale: 1.5, duration: 1, ease: "power2.out",
+                    onComplete: () => miniHeart.remove()
+                });
+            }
+        }
+
+        // Hug Button Action
+        document.getElementById('hug-btn').addEventListener('click', (e) => {
+            createHeartBurst(e.currentTarget);
+            triggerConfetti();
+        });
+
+        // Dodging "No" Button
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+        let noCount = 0;
+        let angryEmailSent = false;
+
+        const moveNoButton = () => {
+            noCount++;
+            if (!angryEmailSent) {
+                sendEmailNotification(
+                    "Kashish is Still Angry 🥺",
+                    "Kashish clicked 'No, Still Mad' on your apology website!"
+                );
+                angryEmailSent = true;
+            }
+
+            const currentScale = 1 + (noCount * 0.1);
+            gsap.to(yesBtn, { scale: Math.min(currentScale, 1.4), duration: 0.2 });
+
+            const x = (Math.random() - 0.5) * 220;
+            const y = (Math.random() - 0.5) * 120;
+            gsap.to(noBtn, { x: x, y: y, duration: 0.25, ease: "power2.out" });
+        };
+
+        noBtn.addEventListener('mouseenter', moveNoButton);
+        noBtn.addEventListener('click', (e) => { e.preventDefault(); moveNoButton(); });
+
+        const modal = document.getElementById('success-modal');
+        const modalContent = document.getElementById('modal-card');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        yesBtn.addEventListener('click', () => {
+            sendEmailNotification(
+                "Kashish Forgave You! 🎉💖",
+                "Great news! Kashish clicked 'Yes, I Forgive You!' on your apology website!"
+            );
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            
+            gsap.fromTo(modalContent, { scale: 0.7, y: 30 }, { scale: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" });
+            triggerConfetti();
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            gsap.to(modalContent, {
+                scale: 0.8, opacity: 0, duration: 0.3,
+                onComplete: () => {
+                    modal.classList.add('opacity-0', 'pointer-events-none');
+                    modal.classList.remove('opacity-100');
+                    gsap.set(modalContent, { opacity: 1, scale: 1 });
+                }
+            });
+        });
+
+        function triggerConfetti() {
+            const count = 200;
+            const defaults = { origin: { y: 0.7 }, colors: ['#f472b6', '#fb7185', '#fda4af', '#ffffff', '#e11d48'] };
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, { particleCount: Math.floor(count * particleRatio) }));
+            }
+            fire(0.25, { spread: 26, startVelocity: 55 });
+            fire(0.2, { spread: 60 });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+            fire(0.1, { spread: 120, startVelocity: 45 });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            createFloatingHearts();
+            initCloudsAnimation();
+            initEntranceAnimations();
+        });
+    </script>
+</body>
+</html>
